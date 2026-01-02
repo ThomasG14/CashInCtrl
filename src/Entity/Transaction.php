@@ -7,6 +7,12 @@ use App\Repository\TransactionRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: TransactionRepository::class)]
+#[ORM\InheritanceType('JOINED')]
+#[ORM\DiscriminatorColumn(name: 'discr', type: 'string')]
+#[ORM\DiscriminatorMap([
+    'transaction' => Transaction::class,
+    'recurring' => RecurringTransaction::class,
+])]
 class Transaction
 {
     #[ORM\Id]

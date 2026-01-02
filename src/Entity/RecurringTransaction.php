@@ -4,7 +4,7 @@ namespace App\Entity;
 
 use App\Repository\RecurringTransactionRepository;
 use Doctrine\ORM\Mapping as ORM;
-use app\Enum\RecurrenceType;
+use App\Enum\RecurrenceType;
 
 #[ORM\Entity(repositoryClass: RecurringTransactionRepository::class)]
 class RecurringTransaction extends Transaction
@@ -13,10 +13,7 @@ class RecurringTransaction extends Transaction
     private ?RecurrenceType $recurrenceType = null;
 
     #[ORM\Column(nullable: true)]
-    private ?int $Day = null;
-
-    #[ORM\Column]
-    private ?\DateTimeImmutable $createdAt = null;
+    private ?int $day = null;
 
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $updatedAt = null;
@@ -35,25 +32,12 @@ class RecurringTransaction extends Transaction
 
     public function getDay(): ?int
     {
-        return $this->Day;
+        return $this->day;
     }
 
-    public function setDay(?int $Day): static
+    public function setDay(?int $day): static
     {
-        $this->Day = $Day;
-
-        return $this;
-    }
-
-    public function getCreatedAt(): ?\DateTimeImmutable
-    {
-        return $this->createdAt;
-    }
-
-    public function setCreatedAt(\DateTimeImmutable $createdAt): static
-    {
-        $this->createdAt = $createdAt;
-
+        $this->day = $day;
         return $this;
     }
 
