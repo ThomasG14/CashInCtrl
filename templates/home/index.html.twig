@@ -1,0 +1,93 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CashInCtrl - Gérez vos finances intelligemment{% endblock %}
+
+{% block body %}
+<div class="relative min-h-screen overflow-hidden gradient-bg flex items-center justify-center">
+    
+    {# Formes géométriques animées en arrière-plan #}
+    <div class="geometric-shape shape-1"></div>
+    <div class="geometric-shape shape-2"></div>
+    <div class="geometric-shape shape-3"></div>
+    
+    {# Contenu principal #}
+    <div class="relative z-10 max-w-6xl mx-auto px-6 py-12 text-center">
+        
+        {# Logo / Icône animé #}
+        <div class="mb-8 animate-fade-in-down">
+            <div class="inline-block text-8xl mb-4">
+                💰
+            </div>
+        </div>
+        
+        {# Titre principal #}
+        <h1 class="text-6xl md:text-7xl lg:text-8xl font-bold mb-6 animate-fade-in-down-delay-1">
+            <span class="bg-gradient-to-r from-primary-400 via-primary-500 to-primary-600 bg-clip-text text-transparent">
+                CashInCtrl
+            </span>
+        </h1>
+        
+        {# Sous-titre #}
+        <p class="text-xl md:text-2xl lg:text-3xl text-gray-300 mb-4 animate-fade-in-down-delay-2 max-w-3xl mx-auto">
+            Prenez le contrôle de vos finances avec élégance
+        </p>
+        
+        {# Description #}
+        <p class="text-base md:text-lg text-gray-400 mb-12 animate-fade-in-down-delay-2 max-w-2xl mx-auto">
+            Une solution moderne et intuitive pour gérer vos comptes, suivre vos transactions et atteindre vos objectifs financiers.
+        </p>
+        
+        {# Boutons CTA #}
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-down-delay-3">
+            {# Bouton principal - Créer un compte #}
+            <a href="#" class="btn-primary px-8 py-4 rounded-xl font-semibold text-lg text-white inline-flex items-center gap-2 group">
+                <span>Créer un compte</span>
+                <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                </svg>
+            </a>
+            
+            {# Bouton secondaire - Se connecter #}
+            <a href="#" class="btn-secondary px-8 py-4 rounded-xl font-semibold text-lg text-white inline-flex items-center gap-2 group">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"/>
+                </svg>
+                <span>Se connecter</span>
+            </a>
+        </div>
+        
+        {# Badges de fonctionnalités avec effet glassmorphism #}
+        <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 animate-fade-in-down-delay-3">
+            {# Feature 1 #}
+            <div class="glass rounded-2xl p-6 hover:bg-white/10 transition-all duration-300 hover:scale-105">
+                <div class="text-4xl mb-3">📊</div>
+                <h3 class="text-xl font-semibold text-white mb-2">Tableaux de bord</h3>
+                <p class="text-gray-400 text-sm">Visualisez vos finances en temps réel avec des graphiques intuitifs</p>
+            </div>
+            
+            {# Feature 2 #}
+            <div class="glass rounded-2xl p-6 hover:bg-white/10 transition-all duration-300 hover:scale-105">
+                <div class="text-4xl mb-3">🔒</div>
+                <h3 class="text-xl font-semibold text-white mb-2">Sécurité maximale</h3>
+                <p class="text-gray-400 text-sm">Vos données sont protégées avec un chiffrement de niveau bancaire</p>
+            </div>
+            
+            {# Feature 3 #}
+            <div class="glass rounded-2xl p-6 hover:bg-white/10 transition-all duration-300 hover:scale-105">
+                <div class="text-4xl mb-3">⚡</div>
+                <h3 class="text-xl font-semibold text-white mb-2">Rapide et simple</h3>
+                <p class="text-gray-400 text-sm">Interface moderne et intuitive pour une gestion sans effort</p>
+            </div>
+        </div>
+        
+    </div>
+    
+    {# Footer minimaliste #}
+    <div class="absolute bottom-6 left-0 right-0 text-center z-10">
+        <p class="text-gray-500 text-sm">
+            © 2026 CashInCtrl - Tous droits réservés
+        </p>
+    </div>
+    
+</div>
+{% endblock %}

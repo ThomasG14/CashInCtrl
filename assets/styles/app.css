@@ -1,3 +1,183 @@
+@import "tailwindcss";
+
+/* Configuration Tailwind v4 avec plugin Flowbite */
+@plugin "flowbite/plugin";
+
+/* Thème personnalisé - Palette Rouge Dark Mode */
+@theme {
+    /* Couleurs principales - Rouge moderne */
+    --color-primary-50: #fef2f2;
+    --color-primary-100: #fee2e2;
+    --color-primary-200: #fecaca;
+    --color-primary-300: #fca5a5;
+    --color-primary-400: #f87171;
+    --color-primary-500: #ef4444;
+    --color-primary-600: #dc2626;
+    --color-primary-700: #b91c1c;
+    --color-primary-800: #991b1b;
+    --color-primary-900: #7f1d1d;
+    --color-primary-950: #450a0a;
+
+    /* Animations personnalisées */
+    --animate-fade-in-down: fade-in-down 1s ease-out;
+    --animate-float: float 6s ease-in-out infinite;
+    --animate-rotate-slow: rotate-slow 20s linear infinite;
+    --animate-pulse-slow: pulse-slow 4s ease-in-out infinite;
+}
+
+/* Keyframes pour les animations */
+@keyframes fade-in-down {
+    0% {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes rotate-slow {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes pulse-slow {
+    0%,
+    100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.6;
+        transform: scale(1.05);
+    }
+}
+
+/* Styles de base pour le dark mode */
+:root {
+    color-scheme: dark;
+}
+
 body {
-    background-color: skyblue;
+    background-color: #0a0a0a;
+    color: #f5f5f5;
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+/* Gradient animé pour le background */
+.gradient-bg {
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a0505 50%, #0a0a0a 100%);
+    background-size: 200% 200%;
+    animation: gradient-shift 15s ease infinite;
+}
+
+@keyframes gradient-shift {
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Effet glassmorphism */
+.glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Formes géométriques animées */
+.geometric-shape {
+    position: absolute;
+    border-radius: 20% 80% 60% 40% / 70% 30% 70% 30%;
+    opacity: 0.1;
+    filter: blur(40px);
+}
+
+.shape-1 {
+    width: 400px;
+    height: 400px;
+    background: linear-gradient(45deg, #dc2626, #991b1b);
+    top: 10%;
+    left: 10%;
+    animation: float 8s ease-in-out infinite, rotate-slow 25s linear infinite;
+}
+
+.shape-2 {
+    width: 300px;
+    height: 300px;
+    background: linear-gradient(135deg, #ef4444, #7f1d1d);
+    bottom: 15%;
+    right: 15%;
+    animation: float 10s ease-in-out infinite reverse,
+        rotate-slow 30s linear infinite reverse;
+}
+
+.shape-3 {
+    width: 250px;
+    height: 250px;
+    background: linear-gradient(90deg, #f87171, #450a0a);
+    top: 50%;
+    right: 20%;
+    animation: float 12s ease-in-out infinite,
+        pulse-slow 6s ease-in-out infinite;
+}
+
+/* Animations pour les éléments de la page */
+.animate-fade-in-down {
+    animation: fade-in-down 1s ease-out;
+}
+
+.animate-fade-in-down-delay-1 {
+    animation: fade-in-down 1s ease-out 0.2s both;
+}
+
+.animate-fade-in-down-delay-2 {
+    animation: fade-in-down 1s ease-out 0.4s both;
+}
+
+.animate-fade-in-down-delay-3 {
+    animation: fade-in-down 1s ease-out 0.6s both;
+}
+
+/* Boutons avec effet hover premium */
+.btn-primary {
+    background: linear-gradient(135deg, #dc2626, #991b1b);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(220, 38, 38, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(220, 38, 38, 0.5);
+    background: linear-gradient(135deg, #ef4444, #b91c1c);
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(220, 38, 38, 0.5);
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background: rgba(220, 38, 38, 0.1);
+    border-color: #dc2626;
+    transform: translateY(-2px);
 }
