@@ -1,7 +1,7 @@
 @import "tailwindcss";
+@import '../vendor/flowbite/dist/flowbite.min.css';
 
 /* Configuration Tailwind v4 avec plugin Flowbite */
-@plugin "flowbite/plugin";
 
 /* Thème personnalisé - Palette Rouge Dark Mode */
 @theme {

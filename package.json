@@ -1,9 +1,0 @@
-{
-  "name": "cashinctrl",
-  "version": "1.0.0",
-  "description": "CashInCtrl - Modern financial management application",
-  "private": true,
-  "dependencies": {
-    "flowbite": "^2.5.2"
-  }
-}
