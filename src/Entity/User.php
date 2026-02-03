@@ -6,15 +6,23 @@ use App\Repository\UserRepository;
 use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Event\PrePersistEventArgs;
+use Doctrine\ORM\Event\PreUpdateEventArgs;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\HasLifecycleCallbacks;
+use Doctrine\ORM\Mapping\PrePersist;
+use Doctrine\ORM\Mapping\PreUpdate;
 use Symfony\Bridge\Doctrine\IdGenerator\UuidGenerator;
 use Symfony\Bridge\Doctrine\Types\UuidType;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Uid\Uuid;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
+#[HasLifecycleCallbacks]
+#[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -55,6 +63,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     #[ORM\OneToMany(targetEntity: TransactionLabel::class, mappedBy: 'userLabel', orphanRemoval: true)]
     private Collection $transactionLabels;
+
+    #[ORM\Column(nullable: false)]
+    private bool $isVerified = false;
 
     public function __construct()
     {
@@ -109,18 +120,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->createdAt;
     }
 
-    public function setCreatedAt(DateTimeImmutable $createdAt): static {
-        $this->createdAt = $createdAt;
-        return $this;
-    }
-
     public function getUpdatedAt(): ?DateTimeImmutable {
         return $this->updatedAt;
-    }
-
-    public function setUpdatedAt(?DateTimeImmutable $updatedAt): static {
-        $this->updatedAt = $updatedAt;
-        return $this;
     }
 
     public function getSetting(): ?UserSetting {
@@ -198,4 +199,26 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+    #[PrePersist]
+    public function prePersistDate(PrePersistEventArgs $eventArgs) {
+        $this->createdAt = new DateTimeImmutable();
+    }
+    #[PreUpdate]
+    public function preUpdateDate(PreUpdateEventArgs $eventArgs) {
+        $this->updatedAt = new DateTimeImmutable();
+    }
+
+    public function isVerified(): bool
+    {
+        return $this->isVerified;
+    }
+
+    public function setIsVerified(bool $isVerified): static
+    {
+        $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
 }

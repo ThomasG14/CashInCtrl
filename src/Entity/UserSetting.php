@@ -4,7 +4,9 @@ namespace App\Entity;
 
 use App\Repository\UserSettingRepository;
 use DateTimeImmutable;
+use Doctrine\ORM\Event\PreUpdateEventArgs;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\PreUpdate;
 
 #[ORM\Entity(repositoryClass: UserSettingRepository::class)]
 class UserSetting
@@ -16,7 +18,7 @@ class UserSetting
 
     #[ORM\OneToOne(inversedBy: 'setting', cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
-    private ?user $attachedUser = null;
+    private ?User $attachedUser = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $profileImg = null;
@@ -78,5 +80,10 @@ class UserSetting
     public function setUpdatedAt(?DateTimeImmutable $updatedAt): static {
         $this->updatedAt = $updatedAt;
         return $this;
+    }
+
+    #[PreUpdate]
+    public function preUpdateDate(PreUpdateEventArgs $eventArgs) {
+        $this->updatedAt = new DateTimeImmutable();
     }
 }

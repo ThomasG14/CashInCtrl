@@ -16,25 +16,6 @@ return [
         'path' => './assets/app.js',
         'entrypoint' => true,
     ],
-    'flowbite' => [
-        'version' => '4.0.1',
-    ],
-    '@popperjs/core' => [
-        'version' => '2.11.8',
-    ],
-    'flowbite-datepicker' => [
-        'version' => '2.0.0',
-    ],
-    'flowbite/dist/flowbite.min.css' => [
-        'version' => '4.0.1',
-        'type' => 'css',
-    ],
-    'flowbite/plugin' => [
-        'version' => '4.0.1',
-    ],
-    'mini-svg-data-uri' => [
-        'version' => '1.4.4',
-    ],
     'tailwindcss/plugin' => [
         'version' => '4.1.17',
     ],
@@ -43,5 +24,11 @@ return [
     ],
     'tailwindcss/colors' => [
         'version' => '4.1.17',
+    ],
+    '@popperjs/core' => [
+        'version' => '2.11.8',
+    ],
+    'mini-svg-data-uri' => [
+        'version' => '1.4.4',
     ],
 ];
